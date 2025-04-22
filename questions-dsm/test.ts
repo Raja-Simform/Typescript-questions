@@ -72,32 +72,70 @@
 // // => { '3': 2, '5': 1 }
 
 
-function ImmutableList<T>(arr:T[]){
-    let arr1=arr; 
-    console.log(arr1);
-    const obj={
-        push(num:T){
-            arr1.push(num)
-            return obj;
-        },
-        map<U>(clbk:(args:T)=>U){
-        //    console.log(arr1.map(clbk));
-           let arr2=arr1.map(clbk);
-           return ImmutableList(arr2);
+// function ImmutableList<T>(arr:T[]){
+//     let arr1=arr; 
+//     console.log(arr1);
+//     const obj={
+//         push(num:T){
+//             arr1.push(num)
+//             return obj;
+//         },
+//         map<U>(clbk:(args:T)=>U){
+//         //    console.log(arr1.map(clbk));
+//            let arr2=arr1.map(clbk);
+//            return ImmutableList(arr2);
            
-        },
-        filter(clbk:(args:T)=>boolean){
-          console.log(arr1);  
-          arr1=arr1.filter(clbk);
-          return obj;
-        },
-        value(){
-            return arr1;
-        }
-    }
-    return obj;
+//         },
+//         filter(clbk:(args:T)=>boolean){
+//           console.log(arr1);  
+//           arr1=arr1.filter(clbk);
+//           return obj;
+//         },
+//         value(){
+//             return arr1;
+//         }
+//     }
+//     return obj;
        
 
- }   
+//  }   
 
- console.log(ImmutableList([1,2,3]).push(4).map(x => x * 2).filter(x => x > 5).push(100).map(x => x + " <-").value())
+//  console.log(ImmutableList([1,2,3]).push(4).map(x => x * 2).filter(x => x > 5).push(100).map(x => x + " <-").value())
+
+
+// type AA = TupleToUnion<["a", "b", "c"]>; // "a" | "b" | "c"
+
+// type TupleToUnion<T extends any[]>= T extends [infer A,...infer args]?A|TupleToUnion<args>:never;
+
+// type Admin=APIRoutesVersion<"/api/admin/api/","1.0">  //"/api/1.0/admin/api/1.0/" 
+// type Users=APIRoutesVersion<"/api/users/","2.0"> // "/api/2.0/users/"
+// type SuperAdmins=APIRoutesVersion<"/api/super-admins/","3.0"> // "/api/3.0/super-admins/"
+
+
+// type APIRoutesVersion<T extends string,U extends string>= T extends `/api/${infer A}`?`/api/${U}/${A}`:never;
+
+//Given interface of Object, create type in a way that every key is now function that return approriate type
+// type Attributes = {
+//     name: string;
+//     age: number;
+//     isPlayer: boolean;
+//   };
+  
+//   type AttributeGetter<T > = {
+//     [P in keyof T as `get${Capitalize< P>}`]: () => T[P];
+//   };
+  
+//   type a = AttributeGetter<Attributes>;
+  
+//   /**
+//    * type of AttributeGetter should be...
+//    * {
+//    *   getName: () => string;
+//    *   getAge: () => number;
+//    *   getIsPlayer: () => boolean;
+//    * }
+//    */
+
+// const a="helloword.js"
+// constb=a.split()
+  
